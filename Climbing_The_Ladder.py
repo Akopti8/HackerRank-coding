@@ -16,9 +16,14 @@ import bisect
 
 def climbingLeaderboard(ranked, player,ranlen, playlen):
     # Write your code here
+    #below we project a new array
+    #we first fo the set operation to remove any duplicates 
+    #list operation projects into rank
+    #finally we sort it 
     rank = sorted(list(set(ranked)))
     out=[]
     ranlen= len(rank)
+    #I have noticed that during bisection, is the value at the returned index is equal then the level is: ranlen-temp otherwise we add 1 to ranlen becuse it wouldn't duplicate level 
     for i in range(playlen):
         temp = bisect.bisect_left(rank,player[i])
         if(temp == ranlen):
